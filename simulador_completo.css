@@ -1,0 +1,157 @@
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1f3c88;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #e0e0e0;
+      padding: 10px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      padding: 10px 15px;
+      border: none;
+      background: #1f3c88;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    nav button:hover {
+      background: #14275c;
+    }
+
+    section {
+      display: none;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden; /* para que no se desborde la animación */
+      
+    }
+
+    section.activa {
+      display: block;
+      animation: aparecer 1s ease forwards, wave 3s ease infinite;
+    }
+
+    /*  */
+    /* Animación de aparición */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Efecto líquido en el texto */
+section.activa h2,
+section.activa p,
+section.activa label,
+section.activa input,
+section.activa table {
+  animation: waveText 4s ease-in-out infinite, colorShift 6s ease-in-out infinite, brillo 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Ondulación tipo agua */
+@keyframes waveText {
+  0% { transform: translateY(0px); }
+  25% { transform: translateY(-2px) skewX(2deg); }
+  50% { transform: translateY(2px) skewX(-2deg); }
+  75% { transform: translateY(-1px) skewX(1deg); }
+  100% { transform: translateY(0px); }
+}
+
+/* Cambio suave de color */
+@keyframes colorShift {
+  0% { color: #333; }
+  50% { color: #0066ff; }
+  100% { color: #333; }
+}
+
+/* Brillo que recorre el texto */
+@keyframes brillo {
+  0% { text-shadow: none; }
+  50% { text-shadow: 0 0 12px rgba(0, 200, 255, 0.7); }
+  100% { text-shadow: none; }
+}
+    /*  */
+
+    input, select {
+      padding: 8px;
+      margin: 5px;
+      width: 220px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #1f3c88;
+      color: white;
+    }
+
+    .aprobado {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .rechazado {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .card {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  
