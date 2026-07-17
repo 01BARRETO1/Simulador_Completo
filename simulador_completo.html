@@ -20,27 +20,28 @@
   <h2>Configurar Parámetros</h2>
 
   <label>Tasa de interés:</label>
-  <input type="number" id="tasaInteres">
+  <input type="number" id="tasaInteres" min="10" max="20" value="15"/>
   <span>%</span>
 
   <br>
-  <button min="10" max="20" value="15" onclick="guardarTasa();">Guardar tasa</button>
+  <button  onclick="guardarTasa();">Guardar tasa</button>
 
   <p id="mensajeTasa"></p>
 </section>
 
 <section id="clientes">
   <h2>Registro de Clientes</h2>
+  
 
-  <input type="text" >
-  <input type="text" >
-  <input type="text" >
-  <input type="number" >
-  <input type="number" >
+  <input type="text" placeholder="Cédula" id="txtCedula"/>
+  <input type="text" placeholder="Nombre" id="txtNombre"/>
+  <input type="text" placeholder="Apellido" id="txtApellido"/>
+  <input type="number" placeholder="Ingresos" id="txtIngresos"/>
+  <input type="number" placeholder="Egresos" id="txtEgresos"/>
 
   <br>
 
-  <button >Guardar cliente</button>
+  <button onclick="guardarCliente();">Guardar cliente</button>
   <button >Limpiar</button>
 
   <table>
@@ -96,5 +97,6 @@
 
 <script src="simulador_completo.js"></script>
 <script src="utilitarios.js"></script>
+<script src="validaciones_cliente.js"></script>
 </body>
 </html>
