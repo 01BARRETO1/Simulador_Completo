@@ -1,59 +1,71 @@
+/* Base: estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 0;
-    }
+header {
+  background: #1f3c88;
+  color: white;
+  padding: 20px 16px;
+  text-align: center;
+}
 
-    header {
-      background: #1f3c88;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #e0e0e0;
-      padding: 10px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+/* Navegación */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #e0e0e0;
+  padding: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
-    nav button {
-      padding: 10px 15px;
-      border: none;
-      background: #1f3c88;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+nav button {
+  padding: 10px 15px;
+  border: none;
+  background: #1f3c88;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.95rem;
+}
 
-    nav button:hover {
-      background: #14275c;
-    }
+nav button:hover {
+  background: #14275c;
+}
 
-    section {
-      display: none;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 8px;
-      overflow: hidden; /* para que no se desborde la animación */
-      
-    }
+/* Secciones */
+section {
+  display: none;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
 
-    section.activa {
-      display: block;
-      animation: aparecer 1s ease forwards, wave 3s ease infinite;
-    }
+section.activa {
+  display: block;
+  animation: aparecer 1s ease forwards, wave 3s ease infinite;
+}
 
-    /*  */
-    /* Animación de aparición */
+/* Animaciones */
 @keyframes aparecer {
   from {
     opacity: 0;
@@ -67,7 +79,6 @@
   }
 }
 
-/* Efecto líquido en el texto */
 section.activa h2,
 section.activa p,
 section.activa label,
@@ -77,7 +88,6 @@ section.activa table {
   display: inline-block;
 }
 
-/* Ondulación tipo agua */
 @keyframes waveText {
   0% { transform: translateY(0px); }
   25% { transform: translateY(-2px) skewX(2deg); }
@@ -86,72 +96,192 @@ section.activa table {
   100% { transform: translateY(0px); }
 }
 
-/* Cambio suave de color */
 @keyframes colorShift {
   0% { color: #333; }
   50% { color: #0066ff; }
   100% { color: #333; }
 }
 
-/* Brillo que recorre el texto */
 @keyframes brillo {
   0% { text-shadow: none; }
   50% { text-shadow: 0 0 12px rgba(0, 200, 255, 0.7); }
   100% { text-shadow: none; }
 }
-    /*  */
 
-    input, select {
-      padding: 8px;
-      margin: 5px;
-      width: 220px;
-    }
+/* Formularios y botones */
+input, select {
+  padding: 8px;
+  margin: 5px;
+  width: 220px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
 
-    button {
-      padding: 8px 12px;
-      margin: 5px;
-      cursor: pointer;
-    }
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: #1f3c88;
+  color: #fff;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
+button:hover { opacity: 0.95; }
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: center;
-    }
+/* Forzar wrapper y scroll (reglas con prioridad) */
+.table-wrapper {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.table-wrapper > table {
+  width: auto !important;
+  min-width: 700px !important; /* ajusta a 600/500 si quieres scroll antes */
+}
+.table-wrapper th, .table-wrapper td {
+  white-space: nowrap;
+}
 
-    th {
-      background: #1f3c88;
-      color: white;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  min-width: 700px; /* fuerza scroll en pantallas muy pequeñas */
+}
 
-    .aprobado {
-      background: #d4edda;
-      color: #155724;
-      padding: 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.95rem;
+}
 
-    .rechazado {
-      background: #f8d7da;
-      color: #721c24;
-      padding: 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
+th {
+  background: #1f3c88;
+  color: white;
+}
 
-    .card {
-      background: #f1f1f1;
-      padding: 15px;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-  
+/* Mensajes de estado */
+.aprobado {
+  background: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.rechazado {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.card {
+  background: #f1f1f1;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Pequeños ajustes visuales */
+label { display: inline-block; margin: 6px 5px 0 0; font-weight: 600; }
+h2 { margin-top: 0; font-size: 1.25rem; }
+
+/* -------------------------
+   Reglas responsive
+   ------------------------- */
+
+/* Large screens (desktops) — ya cubierto por base */
+
+/* Medium screens / tablets */
+@media (max-width: 1024px) {
+  header h1 { font-size: 1.4rem; }
+  input, select { width: 200px; }
+  nav button { padding: 9px 12px; font-size: 0.95rem; }
+  table { min-width: 650px; }
+  section { padding: 18px; margin: 18px; }
+}
+
+/* Small screens / phones */
+@media (max-width: 768px) {
+  header { padding: 16px 12px; }
+  header h1 { font-size: 1.2rem; }
+  nav { padding: 8px; gap: 8px; }
+  nav button { padding: 8px 10px; font-size: 0.9rem; }
+
+  /* Inputs ocupan 100% del ancho disponible en móviles */
+  input, select {
+    width: calc(100% - 22px); /* margen y padding */
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Botones en bloque para mejor accesibilidad */
+  button {
+    width: auto;
+    display: inline-block;
+    font-size: 0.95rem;
+  }
+
+  /* Secciones más compactas */
+  section {
+    padding: 14px;
+    margin: 12px;
+    border-radius: 6px;
+  }
+
+  /* Reducir intensidad de animaciones en móviles para rendimiento */
+  section.activa h2,
+  section.activa p,
+  section.activa label,
+  section.activa input,
+  section.activa table {
+    animation: waveText 3.5s ease-in-out infinite, colorShift 5s ease-in-out infinite;
+  }
+
+  /* Tabla: permitir scroll horizontal y eliminar min-width excesivo */
+  table { min-width: 600px; font-size: 0.9rem; }
+}
+
+/* Extra small / very small phones */
+@media (max-width: 480px) {
+  header h1 { font-size: 1.05rem; }
+  nav { gap: 6px; padding: 6px; }
+  nav button { padding: 7px 8px; font-size: 0.85rem; }
+
+  input, select { width: calc(100% - 20px); font-size: 0.95rem; margin: 6px 0; }
+  label { display:block; margin-bottom:6px; }
+
+  /* Tabla: si la pantalla es muy estrecha, reducir min-width para evitar scroll excesivo */
+  table { min-width: 520px; font-size: 0.88rem; }
+
+  /* Reducir animaciones aún más */
+  section.activa { animation-duration: 0.8s; }
+  section.activa h2,
+  section.activa p,
+  section.activa label,
+  section.activa input,
+  section.activa table {
+    animation: none; /* desactivar animaciones pesadas en pantallas muy pequeñas */
+  }
+}
+
+/* Accesibilidad: foco visible */
+input:focus, button:focus, select:focus {
+  outline: 3px solid rgba(0,119,255,0.18);
+  outline-offset: 2px;
+}
+
+/* Estilos para mensajes de error (si usas validaciones) */
+.input-error { border: 1.5px solid #e74c3c !important; }
+.error-text { color: #e74c3c; font-size: 0.9rem; margin-top:4px; display:block; }
+
+

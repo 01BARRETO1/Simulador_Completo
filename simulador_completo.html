@@ -2,61 +2,65 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <title>Sistema de Créditos</title>
+  <link rel="stylesheet" href="simulador_completo.css">
 </head>
 <body>
 
 <header>
   <h1>Sistema Básico de Créditos</h1>
-   <link rel="stylesheet" href="simulador_completo.css">
 </header>
 
 <nav>
   <button onclick="mostrarSecciones('parametros');">Parámetros</button>
   <button onclick="mostrarSecciones('clientes');">Clientes</button>
+  <button onclick="mostrarSecciones('credito');">Créditos</button>
 </nav>
 
 <section id="parametros">
   <h2>Configurar Parámetros</h2>
 
-  <label>Tasa de interés:</label>
-  <input type="number" id="tasaInteres" min="10" max="20" value="15"/>
+  <label for="tasaInteres">Tasa de interés:</label>
+  <input type="number" id="tasaInteres" min="10" max="20" value="15" />
   <span>%</span>
 
   <br>
-  <button  onclick="guardarTasa();">Guardar tasa</button>
+  <button onclick="guardarTasa();">Guardar tasa</button>
 
   <p id="mensajeTasa"></p>
 </section>
 
 <section id="clientes">
   <h2>Registro de Clientes</h2>
-  
 
-  <input type="text" placeholder="Cédula" id="txtCedula"/>
-  <input type="text" placeholder="Nombre" id="txtNombre"/>
-  <input type="text" placeholder="Apellido" id="txtApellido"/>
-  <input type="number" placeholder="Ingresos" id="txtIngresos"/>
-  <input type="number" placeholder="Egresos" id="txtEgresos"/>
+  <input type="text" placeholder="Cédula" id="txtCedula" />
+  <input type="text" placeholder="Nombre" id="txtNombre" />
+  <input type="text" placeholder="Apellido" id="txtApellido" />
+  <input type="number" placeholder="Ingresos" id="txtIngresos" />
+  <input type="number" placeholder="Egresos" id="txtEgresos" />
 
   <br>
 
   <button onclick="guardarCliente();">Guardar cliente</button>
-  <button  onclick="limpiar();">Limpiar</button>
+  <button onclick="limpiar();">Limpiar</button>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Cédula</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Ingresos</th>
-        <th>Egresos</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tablaClientes">
-       <tr>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Ingresos</th>
+          <th>Egresos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaClientes">
+        <!-- <tr>
           <td>1712345678</td>
           <td>Juan</td>
           <td>Pérez</td>
@@ -87,16 +91,38 @@
           <td>
             <button>Actualizar</button>
             <button>Eliminar</button>
-          </td>
+          </td> -->
         </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </section>
 
+<section id="credito">
+  <h2>Solicitar Crédito</h2>
 
+  <input type="text" id="buscarCedulaCredito" placeholder="Cédula del cliente">
+  <button onclick="buscarClienteCredito()">Buscar cliente</button>
 
-<script src="simulador_completo.js"></script>
-<script src="utilitarios.js"></script>
-<script src="validaciones_cliente.js"></script>
+  <div id="datosClienteCredito" class="card"></div>
+
+  <input type="number" id="montoCredito" placeholder="Monto de crédito, ejemplo: 5000">
+  <input type="number" id="plazoCredito" placeholder="Plazo en años, ejemplo: 2">
+
+  <br>
+
+  <button onclick="calcularCredito()">Calcular crédito</button>
+
+  <div id="resultadoCredito"></div>
+
+  <button id="btnSolicitarCredito" onclick="solicitarCredito()" disabled>
+    Solicitar crédito
+  </button>
+</section>
+
+<!-- Scripts: cargar al final. Dejar el orden para que utilitarios y validaciones puedan usar funciones definidas en simulador_completo.js -->
+<script src="simulador_completo.js" defer></script>
+<script src="utilitarios.js" defer></script>
+<script src="validaciones_cliente.js" defer></script>
 </body>
 </html>
