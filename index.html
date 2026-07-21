@@ -18,6 +18,7 @@
   <button onclick="mostrarSecciones('parametros');">Parámetros</button>
   <button onclick="mostrarSecciones('clientes');">Clientes</button>
   <button onclick="mostrarSecciones('credito');">Créditos</button>
+  <!-- <button onclick="mostrarSecciones('contacto');">contacto</button> -->
 </nav>
 
 <section id="parametros">
@@ -39,9 +40,9 @@
   <input type="text" placeholder="Cédula" id="txtCedula" />
   <input type="text" placeholder="Nombre" id="txtNombre" />
   <input type="text" placeholder="Apellido" id="txtApellido" />
+  <input type="text" placeholder="Correo" id="txtCorreo" />
   <input type="number" placeholder="Ingresos" id="txtIngresos" />
   <input type="number" placeholder="Egresos" id="txtEgresos" />
-
   <br>
 
   <button onclick="guardarCliente();">Guardar cliente</button>
@@ -54,6 +55,7 @@
           <th>Cédula</th>
           <th>Nombre</th>
           <th>Apellido</th>
+          <th>Correo</th>
           <th>Ingresos</th>
           <th>Egresos</th>
           <th>Acciones</th>
@@ -99,12 +101,13 @@
 </section>
 
 <section id="credito">
+  
   <h2>Solicitar Crédito</h2>
 
   <input type="text" id="buscarCedulaCredito" placeholder="Cédula del cliente">
   <button onclick="buscarClienteCredito()">Buscar cliente</button>
 
-  <div id="datosClienteCredito" class="card"></div>
+  <div id="datosClienteCredito" ></div>
 
   <input type="number" id="montoCredito" placeholder="Monto de crédito, ejemplo: 5000">
   <input type="number" id="plazoCredito" placeholder="Plazo en años, ejemplo: 2">
@@ -118,6 +121,17 @@
   <button id="btnSolicitarCredito" onclick="solicitarCredito()" disabled>
     Solicitar crédito
   </button>
+</section>
+<section id="contacto">
+  <div class="card">
+
+   <p>© 2026 Carlos Barreto</p><br>
+
+            <a href="https://wa.me/593987688143?text=Hola%20Carlos,%20quiero%20saber%20más%20de%20tus%20proyectos
+                    " target="_blank">
+                <img src="img/www-logo.png" alt="Logo" class="logo" width="400px">
+            </a>
+  </div>
 </section>
 
 <!-- Scripts: cargar al final. Dejar el orden para que utilitarios y validaciones puedan usar funciones definidas en simulador_completo.js -->

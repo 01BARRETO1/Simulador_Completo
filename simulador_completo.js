@@ -31,6 +31,7 @@ function ocultarSecciones() {
   document.getElementById("parametros").classList.remove("activa");
   document.getElementById("clientes").classList.remove("activa");
   document.getElementById("credito").classList.remove("activa");
+  document.getElementById("contacto").classList.remove("activa");
 }
 //b) Crear función mostrarSeccion(id)
 function mostrarSecciones(id) {
@@ -69,6 +70,8 @@ function guardarCliente() {
   //2. Convertir valores numéricos
   let ingresos = recuperarFloat("txtIngresos");
   let egresos = recuperarFloat("txtEgresos");
+  //Examen let correo
+  let correo= recuperaraTexto("txtCorreo");
   //✔ Si NO existe → crear
   //Variable del objeto si lo encuntra
   let busquedaCliente = buscarCliente(cedula);
@@ -79,8 +82,10 @@ function guardarCliente() {
     cliente.cedula = cedula;
     cliente.nombre = nombre;
     cliente.apellido = apellido;
+    cliente.correo=correo;
     cliente.ingresos = ingresos;
     cliente.egresos = egresos;
+    
     clientes.push(cliente);
     pintarClientes();
   } else {
@@ -90,8 +95,10 @@ function guardarCliente() {
     //seleccionarCliente(cedula);
     clienteSeleccionado.nombre = nombre;
     clienteSeleccionado.apellido = apellido;
+    clienteSeleccionado.correo = correo;
     clienteSeleccionado.ingresos = ingresos;
     clienteSeleccionado.egresos = egresos;
+    
     pintarClientes()
   }
 }
@@ -111,6 +118,7 @@ function pintarClientes() {
     tablitaDinamica += "<td>" + persona.cedula + "</td>" +
       "<td>" + persona.nombre + "</td>" +
       "<td>" + persona.apellido + "</td>" +
+      "<td>" + persona.correo + "</td>" +
       "<td>" + persona.ingresos + "</td>" +
       "<td>" + persona.egresos + "</td>" +
       "<td>" +
@@ -154,6 +162,7 @@ function seleccionarCliente(cedula) {
       mostrarTextoEnCaja("txtCedula", clienteSeleccionado.cedula);
       mostrarTextoEnCaja("txtNombre", clienteSeleccionado.nombre);
       mostrarTextoEnCaja("txtApellido", clienteSeleccionado.apellido);
+      mostrarTextoEnCaja("txtCorreo", clienteSeleccionado.correo);
       mostrarTextoEnCaja("txtIngresos", clienteSeleccionado.ingresos);
       mostrarTextoEnCaja("txtEgresos", clienteSeleccionado.egresos);
     }
@@ -194,6 +203,7 @@ function limpiar() {
   mostrarTextoEnCaja("txtCedula", "");
   mostrarTextoEnCaja("txtNombre", "");
   mostrarTextoEnCaja("txtApellido", "");
+  mostrarTextoEnCaja("txtCorreo", "");
   mostrarTextoEnCaja("txtIngresos", "");
   mostrarTextoEnCaja("txtEgresos", "");
   clienteSeleccionado = null;
@@ -221,21 +231,26 @@ function buscarClienteCredito() {
     //  Guardamos el cliente para usarlo después
     clienteSeleccionado = clienteValido;
     
-    let datosCliente = "<h3>Datos del Cliente</h3><br>" +
+    let datosCliente = "<div class='datosCliente'><h3>Datos del Cliente</h3><br>" +
       "<p><strong>Cédula: </strong>" + clienteValido.cedula + "</p><br>" +
       "<p><strong>Nombre: </strong>" + clienteValido.nombre + "</p><br>" +
       "<p><strong>Apellido: </strong>" + clienteValido.apellido + "</p><br>" +
+      "<p><strong>Correo: </strong>" + clienteValido.correo + "</p><br>"+
       "<p><strong>Ingresos: </strong>" + clienteValido.ingresos + "</p><br>" +
-      "<p><strong>Egresos: </strong>" + clienteValido.egresos + "</p>";
+      "<p><strong>Egresos: </strong>" + clienteValido.egresos + "</p><br></div>";
+      
     mostrarDatos.innerHTML = datosCliente;
+    mostrarDatos.className="card";
   }else{
     // Si no existe, dejamos la variable en null
     clienteSeleccionado = null;
     //4. Si el cliente no existe, mostrar un mensaje indicando que no fue encontrado.
     mostrarDatos.innerHTML = "<h3>🧱Cliente NO encontrado🧱</h3>";
+    mostrarDatos.className="card"
     let resultado = document.getElementById("resultadoCredito");
     let mostrarEnPantalla="";
     resultado.innerHTML=mostrarEnPantalla;
+   
     mostrarTextoEnCaja("montoCredito","");
     mostrarTextoEnCaja("plazoCredito","");
   }
