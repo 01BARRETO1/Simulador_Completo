@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,64 +9,67 @@
   <title>Sistema de Créditos</title>
   <link rel="stylesheet" href="simulador_completo.css">
 </head>
+
 <body>
 
-<header>
-  <h1>Sistema Básico de Créditos</h1>
-</header>
+  <header>
+    <h1>Sistema Básico de Créditos</h1>
+  </header>
 
-<nav>
-  <button onclick="mostrarSecciones('parametros');">Parámetros</button>
-  <button onclick="mostrarSecciones('clientes');">Clientes</button>
-  <button onclick="mostrarSecciones('credito');">Créditos</button>
-  <!-- <button onclick="mostrarSecciones('contacto');">contacto</button> -->
-</nav>
+  <nav>
+    <button onclick="mostrarSecciones('parametros');">Parámetros</button>
+    <button onclick="mostrarSecciones('clientes');">Clientes</button>
+    <button onclick="mostrarSecciones('credito');">Créditos</button>
+    <!-- <button onclick="mostrarSecciones('contacto');">contacto</button> -->
+    <button onclick="mostrarSecciones('listaCreditos');">Créditos Registrados</button>
+  </nav>
 
-<section id="parametros">
-  <h2>Configurar Parámetros</h2>
+  <section id="parametros">
+    <h2>Configurar Parámetros</h2>
 
-  <label for="tasaInteres">Tasa de interés:</label>
-  <input type="number" id="tasaInteres" min="10" max="20" value="15" />
-  <span>%</span>
+    <label for="tasaInteres">Tasa de interés:</label>
+    <input type="number" id="tasaInteres" min="10" max="20" value="15" />
+    <span>%</span>
 
-  <br>
-  <button onclick="guardarTasa();">Guardar tasa</button>
+    <br>
+    <button onclick="guardarTasa();">Guardar tasa</button>
 
-  <p id="mensajeTasa"></p>
-</section>
+    <p id="mensajeTasa"></p>
+  </section>
 
-<section id="clientes">
-  <h2>Registro de Clientes</h2>
+  <section id="clientes">
+    <h2>Registro de Clientes</h2>
 
-  <input type="text" placeholder="Cédula" id="txtCedula" />
-  <input type="text" placeholder="Nombre" id="txtNombre" />
-  <input type="text" placeholder="Apellido" id="txtApellido" />
-  <input type="text" placeholder="Correo" id="txtCorreo" />
-  <input type="number" placeholder="Ingresos" id="txtIngresos" />
-  <input type="number" placeholder="Egresos" id="txtEgresos" />
-  <br>
+    <input type="text" placeholder="Cédula" id="txtCedula" />
+    <input type="text" placeholder="Nombre" id="txtNombre" />
+    <input type="text" placeholder="Apellido" id="txtApellido" />
+    <input type="text" placeholder="Correo" id="txtCorreo" />
+    <input type="number" placeholder="Ingresos" id="txtIngresos" />
+    <input type="number" placeholder="Egresos" id="txtEgresos" />
+    <br>
 
-  <button onclick="guardarCliente();">Guardar cliente</button>
-  <button onclick="limpiar();">Limpiar</button>
+    <button onclick="guardarCliente();">Guardar cliente</button>
+    <button onclick="limpiar();">Limpiar</button>
 
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>Cédula</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Correo</th>
-          <th>Ingresos</th>
-          <th>Egresos</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody id="tablaClientes">
-        <!-- <tr>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Ingresos</th>
+            <th>Egresos</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaClientes">
+          <tr>
           <td>1712345678</td>
           <td>Juan</td>
           <td>Pérez</td>
+          <td>error404@gmail.com</td>
           <td>1200</td>
           <td>500</td>
           <td>
@@ -77,6 +81,7 @@
           <td>1723456789</td>
           <td>María</td>
           <td>Gómez</td>
+          <td>because_bugs123@hotmail.com</td>
           <td>1500</td>
           <td>600</td>
           <td>
@@ -88,55 +93,119 @@
           <td>1734567890</td>
           <td>Carlos</td>
           <td>Ramírez</td>
+          <td>engineer_github@yahoo.com</td>
           <td>900</td>
           <td>350</td>
           <td>
             <button>Actualizar</button>
             <button>Eliminar</button>
-          </td> -->
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-<section id="credito">
-  
-  <h2>Solicitar Crédito</h2>
+  <section id="credito">
 
-  <input type="text" id="buscarCedulaCredito" placeholder="Cédula del cliente">
-  <button onclick="buscarClienteCredito()">Buscar cliente</button>
+    <h2>Solicitar Crédito</h2>
 
-  <div id="datosClienteCredito" ></div>
+    <input type="text" id="buscarCedulaCredito" placeholder="Cédula del cliente">
+    <button onclick="buscarClienteCredito()">Buscar cliente</button>
 
-  <input type="number" id="montoCredito" placeholder="Monto de crédito, ejemplo: 5000">
-  <input type="number" id="plazoCredito" placeholder="Plazo en años, ejemplo: 2">
+    <div id="datosClienteCredito"></div>
 
-  <br>
+    <input type="number" id="montoCredito" placeholder="Monto de crédito, ejemplo: 5000">
+    <input type="number" id="plazoCredito" placeholder="Plazo en años, ejemplo: 2">
 
-  <button onclick="calcularCredito()">Calcular crédito</button>
+    <br>
 
-  <div id="resultadoCredito"></div>
+    <button onclick="calcularCredito()">Calcular crédito</button>
 
-  <button id="btnSolicitarCredito" onclick="solicitarCredito()" disabled>
-    Solicitar crédito
-  </button>
-</section>
-<section id="contacto">
-  <div class="card">
+    <div id="resultadoCredito"></div>
 
-   <p>© 2026 Carlos Barreto</p><br>
+    <button id="btnSolicitarCredito" onclick="solicitarCredito()" disabled>
+      Asignar Crédito
+    </button>
+  </section>
 
-            <a href="https://wa.me/593987688143?text=Hola%20Carlos,%20quiero%20saber%20más%20de%20tus%20proyectos
+  <section id="listaCreditos">
+    <h2>Créditos Registrados</h2>
+
+    <input type="text" id="buscarCedulaListado">
+    <button onclick="buscarCreditosCliente()">Buscar</button>
+    <button onclick="pintarCreditos(creditos)">Ver todos</button>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Monto</th>
+            <th>Tasa</th>
+            <th>Plazo</th>
+            <th>Cuota</th>
+          </tr>
+        </thead>
+        <tbody id="tablaCreditos">
+          <tr>
+            <td>1712345678</td>
+            <td>Juan</td>
+            <td>Pérez</td>
+            <td>error404@gmail.com</td>
+            <td>3000</td>
+            <td>15%</td>
+            <td>12 meses</td>
+            <td>287.50</td>
+            <td><button>Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>1723456789</td>
+            <td>María</td>
+            <td>Gómez</td>
+            <td>because_bugs123@hotmail.com</td>
+            <td>5000</td>
+            <td>14%</td>
+            <td>24 meses</td>
+            <td>237.50</td>
+            <td><button>Eliminar</button></td>
+          </tr>
+          <tr>
+            <td>1734567890</td>
+            <td>Carlos</td>
+            <td>Ramírez</td>
+            <td>engineer_github@yahoo.com</td>
+            <td>1500</td>
+            <td>16%</td>
+            <td>6 meses</td>
+            <td>290.00</td>
+            <td><button >Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <section id="contacto">
+    <div class="card">
+
+      <p>© 2026 Carlos Barreto</p><br>
+
+      <a href="https://wa.me/593987688143?text=Hola%20Carlos,%20quiero%20saber%20más%20de%20tus%20proyectos
                     " target="_blank">
-                <img src="img/www-logo.png" alt="Logo" class="logo" width="400px">
-            </a>
-  </div>
-</section>
+        <img src="img/www-logo.png" alt="Logo" class="logo" width="400px">
+      </a>
+    </div>
+  </section>
 
-<!-- Scripts: cargar al final. Dejar el orden para que utilitarios y validaciones puedan usar funciones definidas en simulador_completo.js -->
-<script src="simulador_completo.js" defer></script>
-<script src="utilitarios.js" defer></script>
-<script src="validaciones_cliente.js" defer></script>
+  <!-- Scripts: cargar al final. Dejar el orden para que utilitarios y validaciones puedan usar funciones definidas en simulador_completo.js -->
+  <script src="simulador_completo.js" defer></script>
+  <script src="utilitarios.js" defer></script>
+  <script src="validaciones_cliente.js" defer></script>
+
 </body>
+
 </html>
